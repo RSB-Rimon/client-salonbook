@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { LayoutDashboard } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { BriefcaseBusiness, LayoutDashboard } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -30,6 +33,7 @@ export default function DashboardShell({
   role,
   userName,
 }: DashboardShellProps) {
+  const pathname = usePathname();
   const dashboardPath =
     role === "admin" ? "/dashboard/admin" : "/dashboard/customer";
   const sectionName =
@@ -70,12 +74,23 @@ export default function DashboardShell({
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     render={<Link href={dashboardPath} />}
-                    isActive
+                    isActive={pathname === dashboardPath}
                   >
                     <LayoutDashboard aria-hidden="true" />
                     <span>Overview</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                {role === "admin" && (
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      render={<Link href="/dashboard/admin/services" />}
+                      isActive={pathname.startsWith("/dashboard/admin/services")}
+                    >
+                      <BriefcaseBusiness aria-hidden="true" />
+                      <span>Manage Services</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
