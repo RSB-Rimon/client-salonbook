@@ -34,7 +34,7 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
           <Link className="text-sm font-medium text-[#66534a] transition hover:text-[#9b6a4e]" href="/">Home</Link>
-          <Link className="text-sm font-medium text-[#66534a] transition hover:text-[#9b6a4e]" href="/services">Services</Link>
+          <Link className="text-sm font-medium text-[#66534a] transition hover:text-[#9b6a4e]" href="/services">Browse Services</Link>
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -63,7 +63,7 @@ export default function Navbar() {
       {mobileMenuOpen && <div className="border-t border-[#eadfd3] bg-[#fffdf9] px-5 py-4 md:hidden">
         <nav className="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile navigation">
           <Link className="rounded-xl px-3 py-3 text-sm font-medium text-[#514139] hover:bg-[#f8f2eb]" href="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link className="rounded-xl px-3 py-3 text-sm font-medium text-[#514139] hover:bg-[#f8f2eb]" href="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+          <Link className="rounded-xl px-3 py-3 text-sm font-medium text-[#514139] hover:bg-[#f8f2eb]" href="/services" onClick={() => setMobileMenuOpen(false)}>Browse Services</Link>
           {!isPending && user ? <>
             <Link className="rounded-xl px-3 py-3 text-sm font-medium text-[#514139] hover:bg-[#f8f2eb]" href={dashboardPath} onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
             <button className="rounded-xl px-3 py-3 text-left text-sm font-medium text-[#8b4d42] hover:bg-[#fcf0ed]" type="button" onClick={handleSignOut}>Sign out</button>
