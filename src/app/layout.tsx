@@ -1,25 +1,39 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/app/components/shared/Navbar";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+import "./globals.css";
+import Navbar from "./components/shared/Navbar";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "SalonBook | Salon Appointments",
-  description: "Discover salon services and manage your appointments with SalonBook.",
+  description:
+    "Discover salon services and manage your appointments with SalonBook.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={[geistSans.variable, geistMono.variable, "h-full antialiased"].join(" ")}>
-      <body className="min-h-full flex flex-col">
-        <TooltipProvider>
-          <Navbar />
-          {children}
-        </TooltipProvider>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col">
+        <Navbar />
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
