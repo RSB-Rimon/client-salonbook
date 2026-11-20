@@ -38,7 +38,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
 
   html {
@@ -46,8 +46,10 @@
   }
 
   body {
-    @apply bg-[#fffdf9] text-[#29251f] antialiased;
+    background-color: #fffdf9;
+    color: #29251f;
     font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   button,
